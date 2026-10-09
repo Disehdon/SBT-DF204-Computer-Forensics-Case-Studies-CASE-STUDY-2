@@ -520,7 +520,8 @@ The full record-by-record timeline is in [`reports/q04_timeline.txt`](reports/q0
 | Storage | Original in `evidence/`; working copy in `working/`; SQL in `sql/`; outputs in `reports/` |
 | Handling notes | No live URL, account, wallet or transaction ID accessed. Session tokens truncated in figures. |
 
-![Figure 16 — Integrity checks](screenshots/fig16_integrity_checks.png)
+<img width="1538" height="270" alt="image" src="https://github.com/user-attachments/assets/5e701935-b05c-455b-9ce8-9d5d31bdaf73" />
+
 *Figure 16: Record-ID contiguity, `sqlite_sequence` and free-page count.*
 
 ---
