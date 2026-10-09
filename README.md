@@ -200,10 +200,12 @@ sha256sum evidence/History working/History_working | tee reports/01_acquisition.
 
 All SQL queries were run with `sqlite3 -readonly` so that the SQLite library could not create journal or WAL files.
 
-![Figure 1 — Acquisition hash](screenshots/fig01_acquisition_hash.png)
+<img width="945" height="164" alt="image" src="https://github.com/user-attachments/assets/95402c50-b6bb-4977-877a-a59aaf5aa77b" />
+
 *Figure 1: Size and SHA-256 of the read-only original and the working copy at acquisition.*
 
-![Figure 2 — Final hashes](screenshots/fig15_final_hashes.png)
+<img width="945" height="164" alt="image" src="https://github.com/user-attachments/assets/1a58a8ac-35a7-412f-82cb-33cecedeb725" />
+
 *Figure 2: Post-analysis SHA-256 values. Both files are unchanged, and no journal or WAL files were created.*
 
 ### 2. Database Schema
@@ -228,13 +230,16 @@ sqlite3 -readonly -header -column working/History_working "PRAGMA table_info(dow
 | `keyword_search_terms` | 4 | Omnibox search terms linked to the search-result URL |
 | `visit_source` | 0 | Empty, which is consistent with local browsing only |
 
-![Figure 3 — Tables and meta](screenshots/fig02_tables_meta.png)
+<img width="1471" height="825" alt="image" src="https://github.com/user-attachments/assets/6b20c741-fbd6-404d-b750-cdf92d725441" />
+
 *Figure 3: Table list, meta values (schema version 53) and row counts.*
 
-![Figure 4 — Schema urls/visits](screenshots/fig03_schema_urls_visits.png)
+<img width="1468" height="719" alt="image" src="https://github.com/user-attachments/assets/f27ec94b-ae25-44a8-a035-78fd2c65e0af" />
+
 *Figure 4: `PRAGMA table_info` for `urls`, `visits` and `downloads_url_chains`.*
 
-![Figure 5 — Schema downloads](screenshots/fig04_schema_downloads.png)
+<img width="1522" height="697" alt="image" src="https://github.com/user-attachments/assets/341f59a4-6088-4123-b69e-92e81da137ef" />
+
 *Figure 5: `PRAGMA table_info` for `downloads`.*
 
 ### 3. Visit Timeline (UTC)
@@ -254,10 +259,12 @@ ORDER BY v.visit_time, v.id;
 - **Time window:** 2022-04-19 13:54:18 → 15:02:56 UTC (68 min 38 s)
 - **Local time (assumed EDT, UTC−4):** 09:54:18 → 11:02:56 on the same date. The device time zone is not recorded in History, so this is an assumption.
 
-![Figure 6a — Timeline 1–37](screenshots/fig05a_timeline_1-37.png)
+<img width="1539" height="841" alt="image" src="https://github.com/user-attachments/assets/9540fa9c-a44f-4979-acea-cc522eea1b47" />
+
 *Figure 6a: Visit timeline (UTC), visits 1–37.*
 
-![Figure 6b — Timeline 38–74](screenshots/fig05b_timeline_38-74.png)
+<img width="1499" height="841" alt="image" src="https://github.com/user-attachments/assets/9c227f3a-dd7c-4d7b-a394-c9b8c8936b74" />
+
 *Figure 6b: Visit timeline (UTC), visits 38–74.*
 
 ### 4. Navigation Transition Analysis
@@ -300,19 +307,24 @@ ORDER BY v.visit_time, v.id;
 - **Seven form submissions**, all in the Craigslist login and posting workflow.
 - **Redirect chains** show the server choosing the region (`geo.craigslist.org` → `baltimore.craigslist.org`) and show the Gmail-wrapped outbound links.
 
-![Figure 7a — Transitions 1–37](screenshots/fig06a_transitions_1-37.png)
+<img width="1520" height="839" alt="image" src="https://github.com/user-attachments/assets/3bfec207-4ad9-496a-b691-8be4486dc8e6" />
+
 *Figure 7a: Decoded transition core types and qualifiers, visits 1–37.*
 
-![Figure 7b — Transitions 38–74](screenshots/fig06b_transitions_38-74.png)
+<img width="1538" height="839" alt="image" src="https://github.com/user-attachments/assets/ce583a94-b07a-47fb-a9a1-1f14faebbc2c" />
+
 *Figure 7b: Decoded transition core types and qualifiers, visits 38–74.*
 
-![Figure 13 — Search terms](screenshots/fig12_search_terms.png)
+<img width="1479" height="206" alt="image" src="https://github.com/user-attachments/assets/c9898b82-2bf8-409a-b518-e243f844e71c" />
+
 *Figure 13: `keyword_search_terms` joined to `urls`.*
 
-![Figure 15 — Typed check and window](screenshots/fig14_typed_and_window.png)
+<img width="1532" height="142" alt="image" src="https://github.com/user-attachments/assets/0477e287-6c7e-4d91-ae3a-3b75b680f03c" />
+
 *Figure 15: Typed-navigation check and first/last visit times.*
 
-![Figure 17 — Transition counts](screenshots/fig17_transition_counts.png)
+<img width="1531" height="403" alt="image" src="https://github.com/user-attachments/assets/e2dd1d2b-2cd0-4628-93d0-a9858733b814" />
+
 *Figure 17: Frequency of each transition value present in the capture.*
 
 ### 5. Craigslist Posting Workflow
@@ -345,10 +357,12 @@ ORDER BY v.visit_time, v.id;
 | Manage posting | 20 | 13:58:27 | LINK | `/manage/7473121658` |
 | Public listing | 21 | 13:58:31 | LINK (opener 20) | "cheaper than Rx supplements" (`hab`) |
 
-![Figure 8 — Posting workflow](screenshots/fig07_posting_workflow.png)
+<img width="1543" height="459" alt="image" src="https://github.com/user-attachments/assets/f681472c-860f-4e8b-a264-f509390b4bce" />
+
 *Figure 8: Craigslist sign-in and posting workflow, visits 3–21.*
 
-![Figure 14 — from_visit chains](screenshots/fig13_from_visit_chains.png)
+<img width="1535" height="606" alt="image" src="https://github.com/user-attachments/assets/c4902bfd-d4e0-4523-900a-a1e7c1a9f367" />
+
 *Figure 14: Recursive `from_visit` walk for visit 20 (posting) and visit 70 (mempool).*
 
 ### 6. Gmail Communication
@@ -380,7 +394,8 @@ ORDER BY v.visit_time, v.id;
 
 **Account displayed:** `unsub.fscs@gmail.com`, taken from page titles beginning at visit 25. The compose-state URLs show only that a compose window was opened. They do not prove a message was sent.
 
-![Figure 9 — Gmail threads](screenshots/fig08_gmail_threads.png)
+<img width="1542" height="316" alt="image" src="https://github.com/user-attachments/assets/bdb43a68-6760-4206-8149-e95f27a77a5a" />
+
 *Figure 9: Gmail inbox, thread and compose views with thread-ID prefixes.*
 
 ### 7. Imgur, Blockchain Explorer and Kraken Correlation
@@ -411,10 +426,12 @@ ORDER BY v.visit_time, v.id;
 | 67–70 | 15:01:31–15:01:33 | kraken.com → mempool.space | From funding page (opener 66) via redirect |
 | 71 | 15:02:05 | kraken.com | History – Ledger page |
 
-![Figure 10 — Imgur, blockchain, Kraken](screenshots/fig09_imgur_blockchain_kraken.png)
+<img width="1497" height="445" alt="image" src="https://github.com/user-attachments/assets/28ae103c-9797-46f2-bc7c-b4fb124fde78" />
+
 *Figure 10: Imgur, blockchain.com, Kraken and mempool.space visits.*
 
-![Figure 11 — txid correlation](screenshots/fig10_txid_correlation.png)
+<img width="945" height="319" alt="image" src="https://github.com/user-attachments/assets/8c2a0abd-428c-4ef1-b39f-4717a2834f18" />
+
 *Figure 11: Every visit whose URL or title contains the transaction ID.*
 
 ### 8. Download Record
@@ -443,7 +460,8 @@ ORDER BY d.start_time;
 
 The saved name `proof_of_payment.png` differs from the server name `dTgrkP7.png`, which suggests the file was deliberately labelled when it was saved.
 
-![Figure 12 — Download record](screenshots/fig11_download_record.png)
+<img width="1472" height="420" alt="image" src="https://github.com/user-attachments/assets/5d5ab43d-967a-4a24-a645-f2aafae8134a" />
+
 *Figure 12: Download record joined to `downloads_url_chains`, with sub-second UTC times.*
 
 ### 9. Timeline (Summary, UTC)
